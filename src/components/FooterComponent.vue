@@ -1,0 +1,14 @@
+<script lang="ts">
+import {defineComponent} from 'vue'
+
+export default defineComponent({
+  name: "FooterComponent"
+})
+</script>
+
+<template>
+</template>
+
+<style scoped lang="scss">
+
+</style>
