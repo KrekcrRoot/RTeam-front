@@ -24,7 +24,25 @@ export default defineComponent({
           </div>
 
         </div>
-        <div class="teachers__body"></div>
+        <div class="teachers__body">
+
+          <div class="teachers__element">
+            Отлично ладят с детьми, самому младшему ученику R Team сейчас 6 лет.
+          </div>
+
+          <div class="teachers__element">
+            Имеют опыт преподавания не менее 3 лет, у каждого преподавателя свой подход и система.
+          </div>
+
+          <div class="teachers__element">
+            Действующие музыканты и участники музыкальных проектов с опытом не менее 10 лет, поэтому ученики смогут получить по-настоящему практические навыки.
+          </div>
+
+          <div class="teachers__element">
+            Открыты для общения и готовы создать максимально комфортные условия для занятий: для нас важно, чтобы ученик получал удовольствие от урока.
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -32,11 +50,16 @@ export default defineComponent({
 
 <style lang="scss">
 .teachers {
+  padding: 120px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 48px;
-  padding: 120px 0;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
 
   h1 {
     color: #000;
@@ -48,11 +71,28 @@ export default defineComponent({
   .teachers__info {
     display: flex;
     flex-direction: column;
+    gap: 32px;
+
+    .teachers__body {
+      display: flex;
+      flex-wrap: wrap;
+
+      .teachers__element {
+        padding-left: 24px;
+        border-left: 2px solid black;
+        color: #000;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        width: 50%;
+        margin: 0 0 2rem ;
+      }
+    }
 
     .teachers__images {
       display: flex;
       gap: 1rem;
-      //height: 427px;
 
       .teachers__img {
         flex: 1;

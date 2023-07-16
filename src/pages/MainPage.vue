@@ -4,10 +4,18 @@ import AdvantagesComponent from "../components/AdvantagesComponent.vue";
 import AboutComponent from "../components/AboutComponent.vue";
 import BlackSectionComponent from "../components/BlackSectionComponent.vue";
 import TeachersComponent from "../components/TeachersComponent.vue";
+import FormComponent from "../components/FormComponent.vue";
+import ContactsComponent from "../components/ContactsComponent.vue";
+import MapComponent from "../components/MapComponent.vue";
+import AnimationComponent from "../components/AnimationComponent.vue";
 
 export default defineComponent({
   name: "MainPage",
-  components: {TeachersComponent, BlackSectionComponent, AboutComponent, AdvantagesComponent},
+  components: {
+    AnimationComponent,
+    MapComponent,
+    ContactsComponent,
+    FormComponent, TeachersComponent, BlackSectionComponent, AboutComponent, AdvantagesComponent},
   data() {
     return {
       cookieClosed: false,
@@ -51,23 +59,29 @@ export default defineComponent({
           и программы обучения, которые подходят для всех уровней игры - от начинающих до продвинутых.</p>
         <a href="" class="btn">Записаться на бесплатный Пробный урок</a>
       </div>
+      <div class="header__body__animation">
+        <animation-component />
+      </div>
     </div>
 
     <transition>
-      <div class="header__cookie" v-if="!cookieClosed" @click="cookieClosed = true">
+      <div class="header__cookie" v-if="!cookieClosed">
         <h2>Мы используем Cookies для улучшения работы сайта</h2>
         <p>Оставаясь на сайте, вы соглашаетесь с использованием файлов cookie</p>
-        <a class="header__cookie-btn">Хорошо</a>
+        <a class="header__cookie-btn" @click="cookieClosed = true">Хорошо</a>
       </div>
     </transition>
   </header>
   <main>
 
     <about-component />
-
-    <black-section-component />
-
+    <transition appear :duration="10000">
+      <black-section-component />
+    </transition>
     <teachers-component />
+    <form-component />
+    <contacts-component />
+    <map-component />
 
   </main>
 </template>
@@ -149,6 +163,9 @@ header {
   .header__body {
     max-width: 1280px;
     margin-top: 120px;
+    display: flex;
+    align-items: center;
+    gap: 5rem;
 
     .header__body__form {
       display: flex;

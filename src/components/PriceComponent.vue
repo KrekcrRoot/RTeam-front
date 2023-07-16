@@ -38,7 +38,7 @@ export default defineComponent({
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    width: 35%;
+    width: 48%;
   }
 
   .price__wrapper {

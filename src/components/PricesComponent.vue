@@ -96,6 +96,9 @@ defineComponent({
 
     .price:first-child {
       border-top: 4px solid #808080;
+      .price__title {
+        width: 18%;
+      }
     }
   }
 
@@ -121,7 +124,6 @@ defineComponent({
   }
 
   p {
-    margin-top: 2rem;
     color: #BDBDBD;
     font-size: 24px;
     font-style: normal;
