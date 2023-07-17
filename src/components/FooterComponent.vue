@@ -10,8 +10,31 @@ export default defineComponent({
   <footer>
     <div class="container">
       <div class="footer__top">
-        
-        <div class="footer__logo">
+
+        <div class="footer__logo__mobile">
+
+          <div class="footer__logo">
+            <img src="/assets/logo.png" alt="">
+          </div>
+
+          <div class="footer__bottom__links">
+            <a href="#">
+              <img src="/assets/telegram_footer.png" alt="">
+            </a>
+            <a href="#">
+              <img src="/assets/whatsapp_footer.png" alt="">
+            </a>
+            <a href="#">
+              <img src="/assets/instagram_footer.png" alt="">
+            </a>
+            <a href="#">
+              <img src="/assets/vk_footer.png" alt="">
+            </a>
+          </div>
+
+        </div>
+
+        <div class="footer__logo__desktop">
           <img src="/assets/logo.png" alt="">
         </div>
 
@@ -27,7 +50,20 @@ export default defineComponent({
       <div class="footer__bottom">
 
         <p>Copyright © 2023 «R Team» Школа музыки</p>
-        <div class="footer__bottom__links"></div>
+        <div class="footer__bottom__links">
+          <a href="#">
+            <img src="/assets/telegram_footer.png" alt="">
+          </a>
+          <a href="#">
+            <img src="/assets/whatsapp_footer.png" alt="">
+          </a>
+          <a href="#">
+            <img src="/assets/instagram_footer.png" alt="">
+          </a>
+          <a href="#">
+            <img src="/assets/vk_footer.png" alt="">
+          </a>
+        </div>
 
       </div>
     </div>
@@ -53,6 +89,10 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .footer__logo__mobile {
+      display: none;
+    }
 
     .footer__top__links {
       display: flex;
@@ -88,6 +128,8 @@ footer {
 
   .footer__bottom {
     margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
 
     p {
       color: #6E6E6E;
@@ -95,6 +137,59 @@ footer {
       font-style: normal;
       font-weight: 300;
       line-height: normal;
+    }
+
+    .footer__bottom__links {
+      gap: 32px;
+      display: flex;
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  footer {
+    .container {
+      width: 90vw;
+    }
+
+    .footer__top {
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer__bottom {
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .footer__logo__mobile {
+    display: flex !important;
+    justify-content: space-between;
+    width: 100%;
+
+    .footer__logo {
+      img {
+        width: 106px;
+        height: 44px;
+      }
+    }
+
+    .footer__bottom__links {
+      gap: 16px;
+      display: flex;
+    }
+  }
+
+  .footer__logo__desktop {
+    display: none !important;
+  }
+
+  .footer__bottom {
+    .footer__bottom__links {
+      display: none !important;
     }
   }
 }

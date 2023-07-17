@@ -131,4 +131,42 @@ export default defineComponent({
 
     }
   }
+
+  @media screen and (max-width: 1280px) {
+    .form {
+      background-size: auto 100%;
+      height: max-content;
+      .container {
+        width: 100vw;
+        flex-direction: column;
+        padding: 48px 16px;
+        gap: 24px;
+
+        .form__title {
+          h1 {
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+          }
+
+          p {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
+          }
+        }
+
+        .form__body {
+          .form__submit {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+          }
+        }
+      }
+    }
+  }
 </style>

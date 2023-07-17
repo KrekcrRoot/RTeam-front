@@ -67,7 +67,7 @@ defineComponent({
         <li>покупка абонемента на 20 занятий дает скидку в <b>4%</b> на покупку следующего абонемента</li>
       </ul>
 
-      <p>Скидка <b>12%</b> суммируется при покупке каждого абонемента до достижения максимальной</p>
+      <p class="description">Скидка <b>12%</b> суммируется при покупке каждого абонемента до достижения максимальной</p>
     </div>
   </div>
 </template>
@@ -136,6 +136,109 @@ defineComponent({
       font-style: normal;
       font-weight: 600;
       line-height: normal;
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .prices {
+    background-size: 100vw 100%;
+    background-repeat: no-repeat;
+
+    .container {
+      width: 100vw;
+      padding: 48px 16px;
+
+      .prices__wrapper {
+        .price {
+          flex-direction: column;
+
+          .price__title {
+            width: 100%;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+          }
+
+          .price__wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+          }
+        }
+      }
+    }
+
+    .description {
+      margin-top: 3rem;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .prices {
+    padding: 0 0 5rem;
+
+    ul {
+      li {
+        color: #BDBDBD;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+
+        b {
+          color: #FFF;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+        }
+      }
+    }
+
+    .description {
+      color: #BDBDBD;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+
+      b {
+        color: #FFF;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+    }
+
+    .prices__wrapper {
+      .price {
+        .price__wrapper {
+          .price__card {
+            .price__card-title {
+              color: #B5B5B5;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+            }
+
+            .price__card-body {
+              color: #FFF;
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+            }
+          }
+        }
+      }
     }
   }
 }

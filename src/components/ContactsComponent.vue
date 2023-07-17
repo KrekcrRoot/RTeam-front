@@ -81,4 +81,53 @@ defineComponent({
     }
   }
 }
+
+@media screen and (max-width: 1280px) {
+  .contacts {
+    padding: 0;
+
+    .container {
+      padding: 48px 16px;
+      width: 100vw;
+
+      h1 {
+        text-align: left;
+      }
+
+      .contacts__wrapper {
+        flex-direction: column;
+        gap: 24px;
+
+        .contact {
+          align-items: flex-start;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .contacts {
+    .container {
+      h1 {
+        color: #000;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+
+      .contacts__wrapper {
+        .contact {
+          p {
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+          }
+        }
+      }
+    }
+  }
+}
 </style>

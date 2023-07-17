@@ -19,8 +19,8 @@ export default defineComponent({
           </div>
 
           <div class="teachers__img">
-            <img src="/assets/teachers3.png" alt="">
-            <img src="/assets/teachers2.png" alt="">
+            <img class="teachers__img__left" src="/assets/teachers3.png" alt="">
+            <img class="teachers__img__right" src="/assets/teachers2.png" alt="">
           </div>
 
         </div>
@@ -102,6 +102,76 @@ export default defineComponent({
         img {
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .teachers {
+    .container {
+      width: 100vw;
+      padding: 16px;
+    }
+    .teachers__info {
+      .teachers__images {
+        flex-direction: column;
+        align-items: center;
+
+        .teachers__img {
+          width: max-content;
+        }
+      }
+
+      .teachers__body {
+        flex-direction: column;
+        .teachers__element {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .teachers {
+    padding: 40px 0;
+
+    .teachers__info {
+      .teachers__images {
+        .teachers__img {
+          width: 90vw;
+
+          .teachers__img__left {
+            flex: 2;
+          }
+
+          .teachers__img__right {
+            flex: 1;
+          }
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+
+      .teachers__body {
+        .teachers__element {
+          color: #000;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+    }
+
+    h1 {
+      color: #000;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
     }
   }
 }

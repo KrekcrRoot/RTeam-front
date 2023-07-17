@@ -83,4 +83,51 @@ export default defineComponent({
     }
   }
 }
+
+@media screen and (max-width: 1280px) {
+  .about {
+    height: max-content;
+    padding: 6rem 0;
+    flex-direction: column-reverse;
+    align-items: center;
+    max-width: 100vw;
+
+    .about__text {
+      align-items: center;
+
+      p {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .about {
+    .about__text {
+      width: 100%;
+    }
+    .about__frames {
+      flex-shrink: 0;
+      justify-content: center;
+
+      .about__frames__one {
+        height: max-content;
+        width: 30%;
+        margin-top: 14vw;
+      }
+
+      .about__frames__two {
+        height: max-content;
+        width: 30%;
+      }
+
+      .about__frames__three {
+        height: max-content;
+        margin-top: 7vw;
+        width: 30%;
+      }
+    }
+  }
+}
 </style>

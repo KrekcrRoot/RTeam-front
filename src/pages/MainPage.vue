@@ -19,6 +19,7 @@ export default defineComponent({
   data() {
     return {
       cookieClosed: false,
+      burgerOpened: false,
     }
   }
 })
@@ -26,31 +27,75 @@ export default defineComponent({
 
 <template>
   <header>
-    <nav class="header__nav">
-      <a href="/" class="header__nav__logo">
-        <img src="/assets/logo.png" alt="">
-      </a>
+    <div class="header__desktop">
+      <nav class="header__nav">
+        <a href="/" class="header__nav__logo">
+          <img src="/assets/logo.png" alt="">
+        </a>
 
-      <ul class="header__nav__links">
-        <li><a href="#about">О нас</a></li>
-        <li><a href="#advantages">Преимущества</a></li>
-        <li><a href="#price">Стоимость</a></li>
-        <li><a href="#teachers">Преподаватели</a></li>
-        <li><a href="#contacts">Контакты</a></li>
-      </ul>
+        <ul class="header__nav__links">
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#advantages">Преимущества</a></li>
+          <li><a href="#price">Стоимость</a></li>
+          <li><a href="#teachers">Преподаватели</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
 
-      <p class="header__nav__phone">+7 981 284 93 00</p>
-    </nav>
+        <p class="header__nav__phone">+7 981 284 93 00</p>
+      </nav>
 
-    <div class="header__links">
-      <a href="#">
-        <img src="/assets/Telegram.svg" alt="Telegram">
-      </a>
+      <div class="header__links">
+        <a href="#">
+          <img src="/assets/Telegram.svg" alt="Telegram">
+        </a>
 
-      <a href="#">
-        <img src="/assets/Whatsapp.png" alt="Whatsapp">
-      </a>
+        <a href="#">
+          <img src="/assets/Whatsapp.png" alt="Whatsapp">
+        </a>
+      </div>
     </div>
+
+    <div class="header__mobile">
+
+      <div class="header__fixed">
+        <a href="/" class="header__nav__logo">
+          <img src="/assets/logo.png" alt="">
+        </a>
+
+        <a class="header__nav__close" @click="this.burgerOpened = true">
+          <img src="/assets/close_burger.svg" alt="">
+        </a>
+      </div>
+
+      <transition>
+        <div v-if="burgerOpened" class="header__burger">
+
+          <div class="header__burger__top">
+            <a href="/" class="header__nav__logo">
+              <img src="/assets/logo.png" alt="">
+            </a>
+
+            <a @click="this.burgerOpened = false" class="header__nav__cls">
+              <img src="/assets/burger_close.svg" alt="">
+            </a>
+          </div>
+
+
+          <ul class="header__nav__links">
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#advantages">Преимущества</a></li>
+            <li><a href="#price">Стоимость</a></li>
+            <li><a href="#teachers">Преподаватели</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+          </ul>
+
+          <p class="header__nav__phone">+7 981 284 93 00</p>
+
+        </div>
+      </transition>
+
+    </div>
+
 
     <div class="header__body">
       <div class="header__body__form">
@@ -108,6 +153,84 @@ header {
   position: relative;
   background-size: 100vw 100vh;
 
+  .header__mobile {
+    display: none;
+    width: 100%;
+
+    .header__burger {
+      position: fixed;
+      height: 100vh;
+      width: 100vw;
+      background-color: rgba(33, 33, 33, 0.995);
+      z-index: 10;
+
+      display: flex;
+      padding: 2rem;
+      flex-direction: column;
+
+      .header__nav__links {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        margin: 3rem 0;
+        gap: 1rem;
+
+        li {
+          a {
+            font-size: 2rem;
+            color: white;
+            text-decoration: none;
+          }
+        }
+      }
+
+      .header__nav__phone {
+        color: white;
+        font-size: 2.2rem;
+      }
+
+      .header__burger__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .header__nav__cls {
+        cursor: pointer;
+
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+    }
+
+    .header__fixed {
+      position: fixed;
+      background-color: rgba(0, 0, 0, 0.6);
+      width: 100%;
+
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+      align-items: center;
+
+      .header__nav__close {
+        cursor: pointer;
+      }
+
+      .header__nav__logo {
+        img {
+          height: 44px;
+          width: 106px;
+        }
+      }
+    }
+
+
+  }
+
   .header__nav {
     padding-top: 26px;
     color: white;
@@ -116,6 +239,7 @@ header {
     max-width: 1280px;
     align-items: center;
     gap: 4rem;
+    flex-wrap: wrap;
 
     .header__nav__logo {
       img {
@@ -241,5 +365,58 @@ main {
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 1600px) {
+  header {
+    background-size: 100vw 100%;
+    height: max-content;
+    .header__links {
+      top: 100px;
+    }
+    //margin-bottom: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  header {
+    .header__body {
+      flex-direction: column;
+      width: 95vw;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  header {
+    .header__body {
+      .header__body__form {
+        width: 90%;
+        h1 {
+          text-align: center;
+          font-size: 32px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+        }
+
+        p {
+          text-align: center;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal;
+        }
+      }
+    }
+
+    .header__desktop {
+      display: none;
+    }
+    .header__mobile {
+      display: flex;
+    }
+  }
 }
 </style>

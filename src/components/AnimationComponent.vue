@@ -157,4 +157,8 @@ defineComponent({
     transform: translateY(-20px) translateX(-20px) scale(1.1);
   }
 }
+
+@media screen and (max-width: 750px) {
+  
+}
 </style>
