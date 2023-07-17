@@ -117,17 +117,17 @@ export default defineComponent({
 
       &.particle_one {
         transform: rotate(30deg) translate(0px, -308px) rotate(-30deg);
-        animation: 60s infinite animation-one linear;
+        animation: 20s infinite animation-one linear;
       }
 
       &.particle_two {
         transform: rotate(10deg) translate(0px, 308px) rotate(-10deg);
-        animation: 60s infinite animation-two linear;
+        animation: 20s infinite animation-two linear;
       }
 
       &.particle_three {
         transform: rotate(-20deg) translate(0px, 308px) rotate(20deg);
-        animation: 60s infinite animation-three linear;
+        animation: 20s infinite animation-three linear;
       }
     }
 
@@ -138,20 +138,24 @@ export default defineComponent({
       border-radius: 16px;
       box-shadow: 0 0 58px 0 rgba(0, 0, 0, 0.08);
       opacity: 0;
+      transition: all 0.15s ease;
 
       &.anim1 {
         transform: translateX(180px) rotate(15deg) translateY(20px);
-        animation: 1s animate-one ease-in-out forwards;
+        opacity: 1;
+        animation: 1s animate-one ease-in-out;
       }
 
       &.anim3 {
         transform: translateY(-20px) translateX(-20px) scale(1.1);
-        animation: 1s animate-three ease-in-out forwards;
+        opacity: 1;
+        animation: 1s animate-three ease-in-out;
       }
 
       &.anim2 {
         transform: rotate(-15deg) translateX(-180px) translateY(-20px);
-        animation: 1s animate-two ease-in-out forwards;
+        opacity: 1;
+        animation: 1s animate-two ease-in-out;
       }
     }
   }
@@ -241,15 +245,15 @@ export default defineComponent({
         }
 
         &.particle_one {
-          animation: 60s infinite animation-one-mobile linear;
+          animation: 20s infinite animation-one-mobile linear;
         }
 
         &.particle_two {
-          animation: 60s infinite animation-two-mobile linear;
+          animation: 20s infinite animation-two-mobile linear;
         }
 
         &.particle_three {
-          animation: 60s infinite animation-three-mobile linear;
+          animation: 20s infinite animation-three-mobile linear;
         }
       }
 

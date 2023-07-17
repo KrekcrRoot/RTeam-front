@@ -14,4 +14,9 @@ export default defineComponent({
   .iframe {
     filter: grayscale(1);
   }
+  @media screen and (max-width: 750px) {
+    .iframe {
+      height: 30vh !important;
+    }
+  }
 </style>

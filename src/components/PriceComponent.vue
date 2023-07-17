@@ -13,7 +13,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="price">
+  <div class="price wow slideInLeft">
     <h3 class="price__title">{{ title }}</h3>
 
     <div class="price__wrapper">
@@ -68,6 +68,19 @@ export default defineComponent({
         font-weight: 600;
         line-height: normal;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 750px){
+  .price {
+    border-bottom: 1px solid #808080 !important;
+    border-top: 0px solid transparent !important;
+    padding-top: 35px;
+    padding-bottom: 0;
+
+    &:first-child {
+      border-top: 1px solid #808080 !important;
     }
   }
 }

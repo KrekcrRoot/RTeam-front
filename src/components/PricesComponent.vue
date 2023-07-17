@@ -3,11 +3,23 @@ import { defineComponent } from "vue";
 import PriceComponent from "./PriceComponent.vue";
 
 export default defineComponent({
-  components: {PriceComponent}
-})
-
-defineComponent({
   name: 'PricesComponent',
+  components: {PriceComponent},
+  methods: {
+    scroll(e: WheelEvent) {
+      if(e.deltaY > 0) {
+        let bottom: null | HTMLElement = document.querySelector('#teachers')
+        if(bottom !== null) {
+          bottom.scrollIntoView()
+        }
+      }else {
+        let up: null | HTMLElement = document.querySelector('#advantages')
+        if(up !== null) {
+          up.scrollIntoView()
+        }
+      }
+    }
+  }
 })
 </script>
 
@@ -17,8 +29,8 @@ defineComponent({
       <h1>Стоимость</h1>
 
       <div class="prices__wrapper">
-        <price-component title="Занятия на ударной установке" >
-          <div class="price__card">
+        <price-component title="Занятия на ударной установке">
+          <div class="price__card new__line">
             <h4 class="price__card-title">Первое пробное</h4>
             <p class="price__card-body">Бесплатно</p>
           </div>
@@ -145,6 +157,15 @@ defineComponent({
     background-size: 100vw 100%;
     background-repeat: no-repeat;
 
+    h1 {
+      margin-bottom: 32px;
+      color: #FFF;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
     .container {
       width: 100vw;
       padding: 48px 16px;
@@ -180,10 +201,19 @@ defineComponent({
 }
 
 @media screen and (max-width: 750px) {
+  .new__line {
+    width: 100%;
+  }
   .prices {
-    padding: 0 0 5rem;
+    padding: 0 0 2rem;
+
+    .container {
+      padding: 16px 16px;
+    }
 
     ul {
+      margin-top: 2rem;
+
       li {
         color: #BDBDBD;
         font-size: 14px;
@@ -207,6 +237,7 @@ defineComponent({
       font-style: normal;
       font-weight: 500;
       line-height: normal;
+      margin-top: 2rem;
 
       b {
         color: #FFF;
@@ -219,7 +250,11 @@ defineComponent({
 
     .prices__wrapper {
       .price {
+        border-top: 2px solid #808080;
+
         .price__wrapper {
+          margin-bottom: 2rem;
+          gap: 2rem;
           .price__card {
             .price__card-title {
               color: #B5B5B5;

@@ -2,7 +2,22 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "TeachersComponent"
+  name: "TeachersComponent",
+  methods: {
+    scroll(e: WheelEvent) {
+      if(e.deltaY > 0) {
+        let bottom: null | HTMLElement = document.querySelector('#form')
+        if(bottom !== null) {
+          bottom.scrollIntoView()
+        }
+      }else {
+        let up: null | HTMLElement = document.querySelector('#price')
+        if(up !== null) {
+          up.scrollIntoView()
+        }
+      }
+    }
+  }
 })
 </script>
 
@@ -12,33 +27,35 @@ export default defineComponent({
       <h1>Немного о наших <br/> преподавателях</h1>
 
       <div class="teachers__info">
+
         <div class="teachers__images">
 
-          <div class="teachers__img">
+          <div class="teachers__img wow slideInUp" data-wow-delay="0.5s">
             <img class="teachers__img__one" src="/assets/teachers1.png" alt="">
           </div>
 
-          <div class="teachers__img">
+          <div class="teachers__img wow slideInUp" data-wow-delay="0.5s">
             <img class="teachers__img__left" src="/assets/teachers3.png" alt="">
             <img class="teachers__img__right" src="/assets/teachers2.png" alt="">
           </div>
 
         </div>
+
         <div class="teachers__body">
 
-          <div class="teachers__element">
+          <div class="teachers__element wow slideInUp" data-wow-delay="0.5s">
             Отлично ладят с детьми, самому младшему ученику R Team сейчас 6 лет.
           </div>
 
-          <div class="teachers__element">
+          <div class="teachers__element wow slideInUp" data-wow-delay="0.5s">
             Имеют опыт преподавания не менее 3 лет, у каждого преподавателя свой подход и система.
           </div>
 
-          <div class="teachers__element">
+          <div class="teachers__element wow slideInUp" data-wow-delay="0.5s">
             Действующие музыканты и участники музыкальных проектов с опытом не менее 10 лет, поэтому ученики смогут получить по-настоящему практические навыки.
           </div>
 
-          <div class="teachers__element">
+          <div class="teachers__element wow slideInUp" data-wow-delay="0.5s">
             Открыты для общения и готовы создать максимально комфортные условия для занятий: для нас важно, чтобы ученик получал удовольствие от урока.
           </div>
 
@@ -133,7 +150,12 @@ export default defineComponent({
   .teachers {
     padding: 40px 0;
 
+    h1 {
+      padding-left: 1rem;
+    }
+
     .teachers__info {
+
       .teachers__images {
         width: max-content;
         display: flex;
@@ -149,11 +171,11 @@ export default defineComponent({
           }
 
           .teachers__img__left {
-            width: 55%
+            width: 60%
           }
 
           .teachers__img__right {
-            width: 30%;
+            width: 25%;
           }
 
           //.teachers__img__left {
@@ -177,6 +199,8 @@ export default defineComponent({
           font-style: normal;
           font-weight: 400;
           line-height: normal;
+          margin-bottom: 1rem;
+
         }
       }
     }

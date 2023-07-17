@@ -9,7 +9,25 @@ export default defineComponent({
       if (html !== null) {
         html.style.transform = `rotate(-10deg) translateX(${e.clientX * 0.015}px) translateY(${e.clientY * 0.015}px)`
       }
+
+      let html2: NodeListOf<HTMLElement> = document.querySelectorAll('.advantages__desktop__body .advantages-advantage')
+      for (const el of html2) {
+        el.style.transform = `translateX(${e.clientX * 0.015}px) translateY(${e.clientY * 0.015}px)`
+      }
     },
+    scroll(e: WheelEvent) {
+      if(e.deltaY > 0) {
+        let bottom: null | HTMLElement = document.querySelector('#price')
+        if(bottom !== null) {
+          bottom.scrollIntoView()
+        }
+      }else {
+        let up: null | HTMLElement = document.querySelector('#about')
+        if(up !== null) {
+          up.scrollIntoView()
+        }
+      }
+    }
   }
 })
 </script>
@@ -31,27 +49,27 @@ export default defineComponent({
             <span class="number">1</span>
           </div>
 
-          <div class="advantages-advantage advantages-two">
+          <div class="advantages-advantage advantages-two wow slideInRight">
             <span class="number">2</span>
             Первое пробное занятие бесплатно
           </div>
 
-          <div class="advantages-advantage advantages-three">
+          <div class="advantages-advantage advantages-three wow slideInLeft">
             Система лояльности для учеников
             <span class="number">3</span>
           </div>
 
-          <div class="advantages-advantage advantages-four">
+          <div class="advantages-advantage advantages-four wow slideInRight">
             <span class="number">4</span>
             Индивидуальный подход
           </div>
 
-          <div class="advantages-advantage advantages-five">
+          <div class="advantages-advantage advantages-five wow slideInLeft">
             Отдельный репетиционный зал для групп
             <span class="number">5</span>
           </div>
 
-          <div class="advantages-advantage advantages-six">
+          <div class="advantages-advantage advantages-six wow slideInRight">
             <span class="number">6</span>
             Бесплатные джемы и отчетные концерты
           </div>
@@ -71,36 +89,36 @@ export default defineComponent({
         <div class="advantages__wrapper">
 
           <div class="advantage">
-            <div class="advantages-advantage advantage-one">
+            <div class="advantages-advantage advantage-one wow slideInUp">
               Бессрочные абонементы
               <span class="number">1</span>
             </div>
 
-            <div class="advantages-advantage advantages-three">
-              Система лояльности для учеников
+            <div class="advantages-advantage advantages-three wow slideInUp">
+              Система лояльности для<br> учеников
               <span class="number">3</span>
             </div>
 
-            <div class="advantages-advantage advantages-five">
-              Отдельный репетиционный зал для групп
+            <div class="advantages-advantage advantages-five wow slideInUp">
+              Отдельный репетиционный<br> зал для групп
               <span class="number">5</span>
             </div>
           </div>
 
           <div class="advantage">
-            <div class="advantages-advantage advantages-two">
-              Первое пробное занятие бесплатно
+            <div class="advantages-advantage advantages-two wow slideInUp">
+              Первое<br> пробное занятие<br> бесплатно
               <span class="number">2</span>
             </div>
 
 
-            <div class="advantages-advantage advantages-four">
+            <div class="advantages-advantage advantages-four wow slideInUp">
               Индивидуальный подход
               <span class="number">4</span>
             </div>
 
-            <div class="advantages-advantage advantages-six">
-              Бесплатные джемы и отчетные концерты
+            <div class="advantages-advantage advantages-six wow slideInUp">
+              Бесплатные<br> джемы и отчетные концерты
               <span class="number">6</span>
             </div>
           </div>
@@ -161,6 +179,7 @@ export default defineComponent({
         gap: 32px;
         align-items: center;
         position: absolute;
+        transition: all 0.2s ease;
 
         .number {
           display: flex;
@@ -219,9 +238,20 @@ export default defineComponent({
     }
   }
 
+  @keyframes animation {
+    0% {
+      transform: rotate(-10deg) translateX(-10px) translateY(-10px);
+    }
+    50% {
+      transform: rotate(-10deg) translateX(10px) translateY(10px);
+    }
+    100% {
+      transform: rotate(-10deg) translateX(-10px) translateY(-10px);
+    }
+  }
+
   .advantages__mobile__body {
     display: none;
-
     width: 100%;
     justify-content: center;
     flex-direction: column;
@@ -241,6 +271,7 @@ export default defineComponent({
         width: 410px;
         border-radius: 10px;
         transform: rotate(-10deg);
+        animation: infinite animation 3s ease;
         transition: all 0.3s ease-out;
       }
     }
@@ -267,6 +298,7 @@ export default defineComponent({
           gap: 32px;
           align-items: center;
           flex-direction: column-reverse;
+          flex: 1;
 
           .number {
             display: flex;
@@ -274,10 +306,10 @@ export default defineComponent({
             justify-content: center;
             background-color: white;
             border-radius: 50%;
-            min-height: 63px;
-            min-width: 63px;
+            min-height: 40px;
+            min-width: 40px;
             color: black;
-            font-size: 40px;
+            font-size: 30px;
             font-style: normal;
             font-weight: 700;
             line-height: normal;
@@ -311,8 +343,12 @@ export default defineComponent({
 
 @media screen and (max-width: 750px) {
   .advantages {
+    //padding: rem 0;
+    padding-top: 3rem;
+    padding-bottom: 0;
+
     .advantages__title {
-      font-size: 28px;
+      font-size: 26px;
       font-style: normal;
       font-weight: 700;
       line-height: normal;
@@ -333,13 +369,22 @@ export default defineComponent({
         gap: 2rem;
 
         .advantage {
+          gap: 4rem;
+
           .advantages-advantage {
             color: #E0E0E0;
             text-align: center;
-            font-size: 16px;
             font-style: normal;
             font-weight: 400;
             line-height: normal;
+            position: relative;
+            padding-top: 50px;
+            font-size: 15px;
+
+            .number {
+              position: absolute;
+              top: 0;
+            }
           }
         }
       }

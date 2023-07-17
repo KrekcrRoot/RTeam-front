@@ -31,3 +31,11 @@ html {
 .container {
     width: 1280px;
 }
+
+.swal-icon--success__ring {
+    border: 4px solid hsla(0, 0%, 65.1%, 0.2)
+}
+
+.swal-icon--success__line {
+    background-color: #60645d;
+}

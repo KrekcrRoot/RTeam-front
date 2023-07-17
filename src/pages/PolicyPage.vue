@@ -665,6 +665,10 @@ main {
 }
 
 @media screen and (max-width: 750px) {
+  main {
+    padding: 50px 0;
+  }
+
   .container {
     width: 95vw;
 

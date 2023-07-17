@@ -14,7 +14,7 @@ export default defineComponent({
       <div class="contacts__wrapper">
         <div class="contact">
           <h2>Телефон</h2>
-          <p>+7 981 284 93 00</p>
+          <a href="tel:89812849300">+7 981 284 93 00</a>
         </div>
         <div class="contact">
           <h2>Адрес</h2>
@@ -63,6 +63,15 @@ export default defineComponent({
       gap: 16px;
       align-items: center;
 
+      a {
+        text-decoration: none;
+        color: #000;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+
       h2 {
         color: #9D9D9D;
         font-size: 24px;
@@ -109,17 +118,32 @@ export default defineComponent({
 @media screen and (max-width: 750px) {
   .contacts {
     .container {
+      gap: 24px;
+
       h1 {
         color: #000;
         font-size: 28px;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
+        width: 50%;
       }
 
       .contacts__wrapper {
         .contact {
+
+          gap: 8px;
+
+          h2 {
+            font-size: 22px;
+          }
           p {
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+          }
+          a {
             font-size: 20px;
             font-style: normal;
             font-weight: 600;

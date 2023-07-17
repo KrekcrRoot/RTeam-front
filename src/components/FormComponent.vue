@@ -1,8 +1,47 @@
 <script lang="ts">
 import { defineComponent } from "vue";
+import swal from 'sweetalert'
+import api from "../api/api.ts";
 
 export default defineComponent({
   name: 'FormComponent',
+  data() {
+    return {
+      name: '',
+      phone: '',
+    }
+  },
+  methods: {
+    submit() {
+      api.call.create(this.name, this.phone).then(() => {
+        swal({
+          icon: 'success',
+          text: 'Отправлено',
+          buttons: [''],
+        })
+      }).catch((error) => {
+        swal({
+          icon: 'error',
+          text: error.response.message,
+        })
+      })
+
+
+    },
+    scroll(e: WheelEvent) {
+      if(e.deltaY > 0) {
+        let bottom: null | HTMLElement = document.querySelector('#contacts')
+        if(bottom !== null) {
+          bottom.scrollIntoView()
+        }
+      }else {
+        let up: null | HTMLElement = document.querySelector('#teachers')
+        if(up !== null) {
+          up.scrollIntoView()
+        }
+      }
+    }
+  }
 })
 </script>
 
@@ -14,9 +53,9 @@ export default defineComponent({
           <h1>Остались вопросы? Задайте их нам</h1>
           <p>Пожалуйста заполните пустые поля формы и мы обязательно свяжемся с Вами в ближайшее время</p>
         </div>
-        <form action="" class="form__body">
-          <input type="text" class="form__input" placeholder="Имя">
-          <input type="text" class="form__input" placeholder="Номер телефона">
+        <form @submit.prevent="submit" class="form__body">
+          <input type="text" class="form__input" placeholder="Имя" v-model="name">
+          <input type="text" class="form__input" placeholder="Номер телефона" v-model="phone">
           <input type="submit" value="Отправить" class="form__submit">
           <p>При нажатии на кнопку “Отправить” вы принимаете условия
             <a href="/terms" class="underline">пользовательского соглашение</a> и даёте согласие на обработку <a href="/policy" class="underline">персональных данных</a></p>
@@ -81,7 +120,7 @@ export default defineComponent({
           font-weight: 400;
           line-height: normal;
           padding: 28px 32px;
-          background: rgba(255, 255, 255, 0.24);
+          background-color: rgba(255, 255, 255, 0.24);
           backdrop-filter: blur(2.5px);
           border: none;
           outline: none;
@@ -108,6 +147,12 @@ export default defineComponent({
           line-height: normal;
           border: none;
           width: 100%;
+          transition: all 0.15s ease;
+
+          &:hover {
+            background-color: #808080;
+            color: white;
+          }
         }
 
         p {
@@ -167,6 +212,44 @@ export default defineComponent({
           }
         }
       }
+    }
+  }
+  
+  @media screen and (max-width: 750px) {
+    .form {
+      background-image: url("/assets/bgmobile.png");
+      .form__blur {
+        padding-bottom: 6rem;
+        .form__body {
+          p {
+            color: #FFF;
+            font-family: Inter;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
+          }
+
+          .form__input {
+            color: #FFF;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            padding: 16px 16px;
+
+            &::placeholder {
+              color: white !important;
+
+            }
+          }
+
+          .form__submit {
+            padding: 16px 0;
+          }
+        }
+      }
+      //padding-bottom: 5rem;
     }
   }
 </style>

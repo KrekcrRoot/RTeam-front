@@ -27,6 +27,28 @@ export default defineComponent({
     closeBurger() {
       this.burgerOpened = false
     },
+    parallax(e: MouseEvent) {
+      let html1: null | HTMLElement = document.querySelector('.anim1')
+      if (html1 !== null) {
+        html1.style.transform = `translateX(${180 + e.clientX * 0.015}px) rotate(15deg) translateY(${20 + e.clientY * 0.015}px)`
+      }
+      let html2: null | HTMLElement = document.querySelector('.anim2')
+      if(html2 !== null) {
+        html2.style.transform = `rotate(-15deg) translateX(${e.clientX * 0.015 - 180}px) translateY(${e.clientY * 0.015 - 20}px)`
+      }
+      let html3: null | HTMLElement = document.querySelector('.anim3')
+      if(html3 !== null) {
+        html3.style.transform = `translateY(${e.clientY * 0.015 - 20}px) translateX(${e.clientX * 0.015 - 20}px) scale(1.1)`
+      }
+    },
+    scroll(e: WheelEvent) {
+      if(e.deltaY > 0) {
+        let about: null | HTMLElement = document.querySelector('#about')
+        if (about !== null) {
+          about.scrollIntoView()
+        }
+      }
+    },
   },
 })
 </script>
@@ -34,10 +56,10 @@ export default defineComponent({
 <template>
   <transition>
     <a href="#form" v-if="buttonShow" class="toFormBtn" @click="buttonShow = false">
-      <img src="/assets/arrow.svg" alt="">
+      Записаться
     </a>
   </transition>
-  <header>
+  <header @mousemove="parallax" @wheel="scroll">
     <div class="header__desktop">
       <nav class="header__nav">
         <a href="/" class="header__nav__logo">
@@ -62,6 +84,10 @@ export default defineComponent({
 
         <a href="https://wa.me/79812849300">
           <img src="/assets/Whatsapp.png" alt="Whatsapp">
+        </a>
+
+        <a href="tel:89812849300">
+          <img src="/assets/phone.svg" alt="Whatsapp">
         </a>
       </div>
     </div>
@@ -100,7 +126,20 @@ export default defineComponent({
             <li><a href="#contacts" @click="closeBurger">Контакты</a></li>
           </ul>
 
-          <p class="header__nav__phone">8 981 284 93 00</p>
+          <div class="header__links">
+            <a href="https://t.me/+79812849300">
+              <img src="/assets/Telegram.svg" alt="Telegram">
+            </a>
+
+            <a href="https://wa.me/79812849300">
+              <img src="/assets/Whatsapp.png" alt="Whatsapp">
+            </a>
+
+            <a href="tel:89812849300">
+              <img src="/assets/phone.svg" alt="Whatsapp">
+            </a>
+          </div>
+
 
         </div>
       </transition>
@@ -122,9 +161,11 @@ export default defineComponent({
 
     <transition>
       <div class="header__cookie" v-if="!cookieClosed">
-        <h2>Мы используем Cookies для улучшения работы сайта</h2>
-        <p>Оставаясь на сайте, вы соглашаетесь с использованием файлов cookie</p>
-        <a class="header__cookie-btn" @click="cookieClosed = true">Хорошо</a>
+        <div class="header__cookie__body">
+          <h2>Мы используем<br> Cookies для улучшения<br> работы сайта</h2>
+          <p>Оставаясь на сайте, вы соглашаетесь с использованием файлов cookie</p>
+          <a class="header__cookie-btn" @click="cookieClosed = true">Хорошо</a>
+        </div>
       </div>
     </transition>
   </header>
@@ -182,16 +223,42 @@ header {
       padding: 2rem;
       flex-direction: column;
 
+      .header__burger__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .header__nav__logo {
+          img {
+            width: 80% !important;
+          }
+        }
+      }
+
+      .header__links {
+        position: static;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        a {
+          img {
+            height: 35px;
+            width: 35px;
+          }
+        }
+      }
+
       .header__nav__links {
         display: flex;
         flex-direction: column;
         list-style: none;
-        margin: 3rem 0;
-        gap: 1rem;
+        margin: 4rem 0;
+        gap: 1.5rem;
 
         li {
           a {
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: white;
             text-decoration: none;
           }
@@ -336,42 +403,52 @@ header {
     background-color: white;
     border-radius: 8px;
     position: fixed;
-    width: 320px;
-    min-height: 180px;
+    width: 350px;
+    min-height: max-content;
     bottom: 32px;
     right: 24px;
     padding: 16px;
     z-index: 100;
+    justify-content: center;
+    align-items: center;
 
-    h2 {
-      font-family: Gilroy, Inter, sans-serif;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 88%;
-      margin-bottom: 12px;
+    .header__cookie__body {
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        font-family: Gilroy, Inter, sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 88%;
+        margin-bottom: 12px;
+      }
+
+      p {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 88%;
+      }
+
+      .header__cookie-btn {
+        cursor: pointer;
+        padding: 14px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 96%;
+        background-color: black;
+        color: white;
+        margin-top: 20px;
+      }
     }
 
-    p {
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 88%;
-    }
 
-    .header__cookie-btn {
-      cursor: pointer;
-      padding: 14px;
-      text-align: center;
-      text-decoration: none;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 96%;
-      background-color: black;
-      color: white;
-      margin-top: 20px;
-    }
   }
 
 }
@@ -412,10 +489,16 @@ main {
     left: 1rem;
     bottom: 1rem;
     background-color: white;
-    border-radius: 50%;
-    height: 60px;
-    width: 60px;
+    border-radius: 30px;
+    height: max-content;
+    text-decoration: none;
+    color: black;
+    width: max-content;
     z-index: 100;
+    font-size: 14px;
+    font-style: normal;
+    padding: 1em;
+    border: 1px solid #808080;
 
     img {
       margin-top: 3px;
@@ -426,23 +509,29 @@ main {
 
   header {
 
-
     .header__cookie {
-      width: 200px;
-      height: max-content;
-
-      bottom: 50px;
-      right: 50px;
-
-      h2 {
-        font-size: 1rem;
-      }
-
-      p {
-        font-size: 1rem;
-      }
-
+      width: 80vw;
+      transform: scale(0.6);
+      bottom: -5vw;
+      right: -13vw;
     }
+
+    //.header__cookie {
+    //  width: 200px;
+    //  height: max-content;
+    //
+    //  bottom: 50px;
+    //  right: 50px;
+    //
+    //  h2 {
+    //    font-size: 1rem;
+    //  }
+    //
+    //  p {
+    //    font-size: 1rem;
+    //  }
+    //
+    //}
 
     .header__body {
       .header__body__form {
@@ -455,6 +544,7 @@ main {
           font-weight: 600;
           line-height: normal;
           text-transform: uppercase;
+          padding: 16px;
         }
 
         h1 {

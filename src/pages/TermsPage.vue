@@ -272,6 +272,12 @@ header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        .header__nav__logo {
+          img {
+            width: 20% !important;
+          }
+        }
       }
 
       .header__nav__cls {
@@ -542,6 +548,10 @@ main {
 }
 
 @media screen and (max-width: 750px) {
+  main {
+    padding: 50px 0;
+  }
+
   .container {
     width: 95vw;
 

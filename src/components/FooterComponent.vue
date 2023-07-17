@@ -38,12 +38,17 @@ export default defineComponent({
           <img src="/assets/logo.png" alt="">
         </div>
 
-        <div class="footer__top__links">
-          <a href="/terms" class="footer__top__link">Пользовательское соглашение</a>
-          <a href="/policy" class="footer__top__link">Политика конфиденциальности</a>
+        <div class="footer__link__btn">
+
+          <div class="footer__top__links">
+            <a href="/terms" class="footer__top__link">Пользовательское соглашение</a>
+            <a href="/policy" class="footer__top__link">Политика конфиденциальности</a>
+          </div>
+
+          <a href="/#form" class="footer__top__btn">Записаться на бесплатный пробный урок</a>
+
         </div>
 
-        <a href="/#form" class="footer__top__btn">Записаться на бесплатный пробный урок</a>
         
       </div>
       <hr />
@@ -92,6 +97,21 @@ footer {
 
     .footer__logo__mobile {
       display: none;
+
+      .footer__bottom__links {
+        a {
+          img {
+            width: 25px;
+            height: 25px;
+          }
+        }
+      }
+    }
+
+    .footer__link__btn {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 32px;
     }
 
     .footer__top__links {
@@ -128,6 +148,12 @@ footer {
       font-style: normal;
       font-weight: 500;
       line-height: normal;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: white;
+        color: black;
+      }
     }
   }
 
@@ -147,6 +173,14 @@ footer {
     .footer__bottom__links {
       gap: 32px;
       display: flex;
+
+      a {
+        transition: all 0.15s ease;
+
+        &:hover {
+          filter: brightness(0) invert(1);
+        }
+      }
     }
   }
 }
@@ -170,21 +204,54 @@ footer {
 }
 
 @media screen and (max-width: 750px) {
+  footer {
+    padding: 32px 0;
+
+    .footer__top {
+      margin-bottom: 32px;
+
+      .footer__top__links {
+        gap: 16px;
+      }
+    }
+
+    .footer__bottom {
+      margin-top: 32px;
+      p {
+        width: 80%;
+        color: #6E6E6E;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+      }
+    }
+  }
+
   .footer__logo__mobile {
     display: flex !important;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 
     .footer__logo {
       img {
-        width: 106px;
-        height: 44px;
+        width: 90px;
+        height: auto;
       }
     }
 
     .footer__bottom__links {
       gap: 16px;
       display: flex;
+    }
+  }
+
+  .footer__link__btn {
+    .footer__top__links {
+      a {
+        font-size: 1rem !important;
+      }
     }
   }
 
