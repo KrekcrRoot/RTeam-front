@@ -18,16 +18,16 @@ export default defineComponent({
           </div>
 
           <div class="footer__bottom__links">
-            <a href="#">
+            <a href="https://t.me/+79812849300">
               <img src="/assets/telegram_footer.png" alt="">
             </a>
-            <a href="#">
+            <a href="https://wa.me/79812849300">
               <img src="/assets/whatsapp_footer.png" alt="">
             </a>
-            <a href="#">
+            <a href="https://instagram.com/rteam_spb?igshid=ZWQyN2ExYTkwZQ==">
               <img src="/assets/instagram_footer.png" alt="">
             </a>
-            <a href="#">
+            <a href="https://vk.com/r_team__spb">
               <img src="/assets/vk_footer.png" alt="">
             </a>
           </div>
@@ -39,11 +39,11 @@ export default defineComponent({
         </div>
 
         <div class="footer__top__links">
-          <a href="" class="footer__top__link">Пользовательское соглашение</a>
-          <a href="" class="footer__top__link">Политика конфиденциальности</a>
+          <a href="/terms" class="footer__top__link">Пользовательское соглашение</a>
+          <a href="/policy" class="footer__top__link">Политика конфиденциальности</a>
         </div>
 
-        <a href="#" class="footer__top__btn">Записаться на бесплатный пробный урок</a>
+        <a href="/#form" class="footer__top__btn">Записаться на бесплатный пробный урок</a>
         
       </div>
       <hr />
@@ -51,16 +51,16 @@ export default defineComponent({
 
         <p>Copyright © 2023 «R Team» Школа музыки</p>
         <div class="footer__bottom__links">
-          <a href="#">
+          <a href="https://t.me/+79812849300">
             <img src="/assets/telegram_footer.png" alt="">
           </a>
-          <a href="#">
+          <a href="https://wa.me/79812849300">
             <img src="/assets/whatsapp_footer.png" alt="">
           </a>
-          <a href="#">
+          <a href="https://instagram.com/rteam_spb?igshid=ZWQyN2ExYTkwZQ==">
             <img src="/assets/instagram_footer.png" alt="">
           </a>
-          <a href="#">
+          <a href="https://vk.com/r_team__spb">
             <img src="/assets/vk_footer.png" alt="">
           </a>
         </div>
@@ -106,6 +106,11 @@ footer {
         font-style: normal;
         font-weight: 300;
         line-height: normal;
+        transition: all 0.2s ease;
+
+        &:hover {
+          color: white;
+        }
       }
     }
 

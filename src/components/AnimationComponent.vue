@@ -1,7 +1,7 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 
-defineComponent({
+export default defineComponent({
   name: 'AnimationComponent',
 })
 </script>
@@ -58,6 +58,39 @@ defineComponent({
   }
 }
 
+// mobile
+
+@keyframes animation-one-mobile {
+  0% {
+    transform: rotate(30deg) translate(0px, -40vw) rotate(-30deg);
+  }
+
+  100% {
+    transform: rotate(390deg) translate(0px, -40vw) rotate(-390deg);
+  }
+}
+
+@keyframes animation-two-mobile {
+  0% {
+    transform: rotate(10deg) translate(0px, 40vw) rotate(-10deg);
+  }
+
+  100% {
+    transform: rotate(370deg) translate(0px, 40vw) rotate(-370deg);
+  }
+}
+
+
+@keyframes animation-three-mobile {
+  0% {
+    transform: rotate(-20deg) translate(0px, 40vw) rotate(20deg);
+  }
+
+  100% {
+    transform: rotate(350deg) translate(0px, 40vw) rotate(-340deg);
+  }
+}
+
 
 
 .animation {
@@ -103,7 +136,7 @@ defineComponent({
       width: 330px;
       position: absolute;
       border-radius: 16px;
-      box-shadow: 0px 0px 58px 0px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 0 58px 0 rgba(0, 0, 0, 0.08);
       opacity: 0;
 
       &.anim1 {
@@ -136,6 +169,17 @@ defineComponent({
   }
 }
 
+@keyframes animate-one-mobile {
+  from {
+    opacity: 0;
+    transform: translateX(180px) rotate(15deg) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(70px) rotate(15deg) translateY(20px);
+  }
+}
+
 @keyframes animate-two {
   from {
     opacity: 0;
@@ -144,6 +188,17 @@ defineComponent({
   to {
     opacity: 1;
     transform: rotate(-15deg) translateX(-180px) translateY(-20px);
+  }
+}
+
+@keyframes animate-two-mobile {
+  from {
+    opacity: 0;
+    transform: rotate(-15deg) translateX(-130px) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-15deg) translateX(-80px) translateY(-20px);
   }
 }
 
@@ -158,7 +213,63 @@ defineComponent({
   }
 }
 
+@keyframes animate-three-mobile {
+  from {
+    opacity: 0;
+    transform: translateY(20px) translateX(-20px) scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-20px) translateX(-20px) scale(1.1);
+  }
+}
+
+
 @media screen and (max-width: 750px) {
-  
+  .animation {
+    .animation__circle {
+      width: 80vw;
+      height: 80vw;
+
+      .particle {
+        width: 40px;
+        height: 40px;
+
+        img {
+          width: 50%;
+          height: 50%;
+        }
+
+        &.particle_one {
+          animation: 60s infinite animation-one-mobile linear;
+        }
+
+        &.particle_two {
+          animation: 60s infinite animation-two-mobile linear;
+        }
+
+        &.particle_three {
+          animation: 60s infinite animation-three-mobile linear;
+        }
+      }
+
+      .animation__img {
+        height: 250px;
+        width: auto;
+
+        &.anim1 {
+          animation: 1s animate-one-mobile ease-in-out forwards;
+        }
+
+        &.anim3 {
+          animation: 1s animate-three-mobile ease-in-out forwards;
+        }
+
+        &.anim2 {
+          animation: 1s animate-two-mobile ease-in-out forwards;
+        }
+      }
+    }
+  }
 }
 </style>

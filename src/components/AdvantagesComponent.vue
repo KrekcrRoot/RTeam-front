@@ -4,7 +4,7 @@ import {defineComponent} from 'vue'
 export default defineComponent({
   name: "AdvantagesComponent",
   methods: {
-    parallax(e) {
+    parallax(e: MouseEvent) {
       let html: null | HTMLElement = document.querySelector('.advantages-img')
       if (html !== null) {
         html.style.transform = `rotate(-10deg) translateX(${e.clientX * 0.015}px) translateY(${e.clientY * 0.015}px)`
@@ -15,7 +15,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="advantages" @mousemove="parallax">
+  <div class="advantages" @mousemove="parallax" id="advantages">
     <div class="container">
       <h1 class="advantages__title">Наши преимущества</h1>
 

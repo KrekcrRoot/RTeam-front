@@ -1,13 +1,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-defineComponent({
+export default defineComponent({
   name: "ContactsComponent"
 })
 </script>
 
 <template>
-  <div class="contacts">
+  <div class="contacts" id="contacts">
     <div class="container">
       <h1>Свяжитесь с нами</h1>
 

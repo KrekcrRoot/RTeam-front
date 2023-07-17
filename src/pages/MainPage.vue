@@ -20,12 +20,23 @@ export default defineComponent({
     return {
       cookieClosed: false,
       burgerOpened: false,
+      buttonShow: true,
     }
-  }
+  },
+  methods: {
+    closeBurger() {
+      this.burgerOpened = false
+    },
+  },
 })
 </script>
 
 <template>
+  <transition>
+    <a href="#form" v-if="buttonShow" class="toFormBtn" @click="buttonShow = false">
+      <img src="/assets/arrow.svg" alt="">
+    </a>
+  </transition>
   <header>
     <div class="header__desktop">
       <nav class="header__nav">
@@ -34,22 +45,22 @@ export default defineComponent({
         </a>
 
         <ul class="header__nav__links">
-          <li><a href="#about">О нас</a></li>
-          <li><a href="#advantages">Преимущества</a></li>
-          <li><a href="#price">Стоимость</a></li>
-          <li><a href="#teachers">Преподаватели</a></li>
-          <li><a href="#contacts">Контакты</a></li>
+          <li><a href="#about" @click="closeBurger">О нас</a></li>
+          <li><a href="#advantages" @click="closeBurger">Преимущества</a></li>
+          <li><a href="#price" @click="closeBurger">Стоимость</a></li>
+          <li><a href="#teachers" @click="closeBurger">Преподаватели</a></li>
+          <li><a href="#contacts" @click="closeBurger">Контакты</a></li>
         </ul>
 
-        <p class="header__nav__phone">+7 981 284 93 00</p>
+        <p class="header__nav__phone">8 981 284 93 00</p>
       </nav>
 
       <div class="header__links">
-        <a href="#">
+        <a href="https://t.me/+79812849300">
           <img src="/assets/Telegram.svg" alt="Telegram">
         </a>
 
-        <a href="#">
+        <a href="https://wa.me/79812849300">
           <img src="/assets/Whatsapp.png" alt="Whatsapp">
         </a>
       </div>
@@ -62,7 +73,7 @@ export default defineComponent({
           <img src="/assets/logo.png" alt="">
         </a>
 
-        <a class="header__nav__close" @click="this.burgerOpened = true">
+        <a class="header__nav__close" @click="burgerOpened = true">
           <img src="/assets/close_burger.svg" alt="">
         </a>
       </div>
@@ -75,21 +86,21 @@ export default defineComponent({
               <img src="/assets/logo.png" alt="">
             </a>
 
-            <a @click="this.burgerOpened = false" class="header__nav__cls">
+            <a @click="burgerOpened = false" class="header__nav__cls">
               <img src="/assets/burger_close.svg" alt="">
             </a>
           </div>
 
 
           <ul class="header__nav__links">
-            <li><a href="#about">О нас</a></li>
-            <li><a href="#advantages">Преимущества</a></li>
-            <li><a href="#price">Стоимость</a></li>
-            <li><a href="#teachers">Преподаватели</a></li>
-            <li><a href="#contacts">Контакты</a></li>
+            <li><a href="#about" @click="closeBurger">О нас</a></li>
+            <li><a href="#advantages" @click="closeBurger">Преимущества</a></li>
+            <li><a href="#price" @click="closeBurger">Стоимость</a></li>
+            <li><a href="#teachers" @click="closeBurger">Преподаватели</a></li>
+            <li><a href="#contacts" @click="closeBurger">Контакты</a></li>
           </ul>
 
-          <p class="header__nav__phone">+7 981 284 93 00</p>
+          <p class="header__nav__phone">8 981 284 93 00</p>
 
         </div>
       </transition>
@@ -102,7 +113,7 @@ export default defineComponent({
         <h1>Хотите научиться играть на барабанах?</h1>
         <p>Вам точно нужно в R Team! У нас вы найдете отличное оборудование, опытных преподавателей
           и программы обучения, которые подходят для всех уровней игры - от начинающих до продвинутых.</p>
-        <a href="" class="btn">Записаться на бесплатный Пробный урок</a>
+        <a href="/#form" class="btn">Записаться на бесплатный Пробный урок</a>
       </div>
       <div class="header__body__animation">
         <animation-component />
@@ -120,9 +131,7 @@ export default defineComponent({
   <main>
 
     <about-component />
-    <transition appear :duration="10000">
-      <black-section-component />
-    </transition>
+    <black-section-component />
     <teachers-component />
     <form-component />
     <contacts-component />
@@ -140,6 +149,11 @@ export default defineComponent({
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
+}
+
+.toFormBtn {
+  display: none;
+  transition: all 0.2s ease;
 }
 
 header {
@@ -186,7 +200,7 @@ header {
 
       .header__nav__phone {
         color: white;
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
 
       .header__burger__top {
@@ -210,7 +224,7 @@ header {
       position: fixed;
       background-color: rgba(0, 0, 0, 0.6);
       width: 100%;
-
+      z-index: 5;
       display: flex;
       justify-content: space-between;
       padding: 1rem;
@@ -327,6 +341,7 @@ header {
     bottom: 32px;
     right: 24px;
     padding: 16px;
+    z-index: 100;
 
     h2 {
       font-family: Gilroy, Inter, sans-serif;
@@ -371,10 +386,10 @@ main {
   header {
     background-size: 100vw 100%;
     height: max-content;
+
     .header__links {
       top: 100px;
     }
-    //margin-bottom: 6rem;
     padding-bottom: 6rem;
   }
 }
@@ -389,10 +404,59 @@ main {
 }
 
 @media screen and (max-width: 750px) {
+  .toFormBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 1rem;
+    bottom: 1rem;
+    background-color: white;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    z-index: 100;
+
+    img {
+      margin-top: 3px;
+      height: 80%;
+      width: 50%;
+    }
+  }
+
   header {
+
+
+    .header__cookie {
+      width: 200px;
+      height: max-content;
+
+      bottom: 50px;
+      right: 50px;
+
+      h2 {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+    }
+
     .header__body {
       .header__body__form {
         width: 90%;
+        .btn {
+          color: #000;
+          text-align: center;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          text-transform: uppercase;
+        }
+
         h1 {
           text-align: center;
           font-size: 32px;

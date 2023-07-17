@@ -7,7 +7,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="form">
+  <div class="form" id="form">
     <div class="form__blur">
       <div class="container">
         <div class="form__title">
@@ -19,7 +19,7 @@ export default defineComponent({
           <input type="text" class="form__input" placeholder="Номер телефона">
           <input type="submit" value="Отправить" class="form__submit">
           <p>При нажатии на кнопку “Отправить” вы принимаете условия
-            <span class="underline">пользовательского соглашение</span> и даёте согласие на обработку <span class="underline">персональных данных</span></p>
+            <a href="/terms" class="underline">пользовательского соглашение</a> и даёте согласие на обработку <a href="/policy" class="underline">персональных данных</a></p>
         </form>
       </div>
     </div>

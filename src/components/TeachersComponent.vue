@@ -7,7 +7,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="teachers">
+  <div class="teachers" id="teachers">
     <div class="container">
       <h1>Немного о наших <br/> преподавателях</h1>
 
@@ -15,7 +15,7 @@ export default defineComponent({
         <div class="teachers__images">
 
           <div class="teachers__img">
-            <img src="/assets/teachers1.png" alt="">
+            <img class="teachers__img__one" src="/assets/teachers1.png" alt="">
           </div>
 
           <div class="teachers__img">
@@ -39,7 +39,7 @@ export default defineComponent({
           </div>
 
           <div class="teachers__element">
-            Открыты для общения и готовы создать максимально комфортные условия для занятий: для нас важно, чтобы ученик получал удовольствие от урока.
+            Открыты для общения и готовы создать максимально комфортные условия для занятий: для нас важно, чтобы ученик получал удовольствие от урока.
           </div>
 
         </div>
@@ -98,9 +98,6 @@ export default defineComponent({
         flex: 1;
         display: flex;
         gap: 1rem;
-
-        img {
-        }
       }
     }
   }
@@ -138,16 +135,34 @@ export default defineComponent({
 
     .teachers__info {
       .teachers__images {
+        width: max-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
         .teachers__img {
           width: 90vw;
+          justify-content: center;
+
+          .teachers__img__one {
+            width: 90%;
+          }
 
           .teachers__img__left {
-            flex: 2;
+            width: 55%
           }
 
           .teachers__img__right {
-            flex: 1;
+            width: 30%;
           }
+
+          //.teachers__img__left {
+          //  flex: 2;
+          //}
+          //
+          //.teachers__img__right {
+          //  flex: 1;
+          //}
 
           img {
             width: 100%;

@@ -12,7 +12,7 @@ defineComponent({
 </script>
 
 <template>
-  <div class="prices">
+  <div class="prices" id="price">
     <div class="container">
       <h1>Стоимость</h1>
 

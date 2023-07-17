@@ -7,7 +7,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="about">
+  <div class="about" id="about">
 
     <div class="about__frames">
 
